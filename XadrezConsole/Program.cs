@@ -6,19 +6,27 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        TabuleiroBase tabuleiro = new TabuleiroBase(8, 8);
+        try
+        {
 
-        tabuleiro.ColocarPeca(new Torre(tabuleiro, Cor.Preta), new Posicao(0, 0));
-        tabuleiro.ColocarPeca(new Torre(tabuleiro, Cor.Preta), new Posicao(1, 3));
-        tabuleiro.ColocarPeca(new Rei(tabuleiro, Cor.Preta), new Posicao(2, 4));
+            TabuleiroBase tabuleiro = new TabuleiroBase(8, 8);
+
+            tabuleiro.ColocarPeca(new Torre(tabuleiro, Cor.Preta), new Posicao(0, 0));
+            tabuleiro.ColocarPeca(new Torre(tabuleiro, Cor.Preta), new Posicao(1, 3));
+            tabuleiro.ColocarPeca(new Rei(tabuleiro, Cor.Preta), new Posicao(0, 9));
 
 
-        Tela.ImprimirTabuleiro(tabuleiro);
+            Tela.ImprimirTabuleiro(tabuleiro);
 
-        Posicao P;
+            Posicao P;
 
-        P = new Posicao(3, 4);
+            P = new Posicao(3, 4);
 
-        Console.WriteLine("Posição: " + P);
+            Console.WriteLine("Posição: " + P);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
 }

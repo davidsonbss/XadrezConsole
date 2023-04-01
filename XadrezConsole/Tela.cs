@@ -6,12 +6,12 @@ namespace XadrezConsole;
     {
         for (int i = 0; i < tab.Linhas; i++)
         {
-            for (int j = 0; j < tab.Counas; j++)
+            for (int j = 0; j < tab.Colunas; j++)
             {
-                if(tab.GetPeca(i, j) is null)
+                if(tab.MovPeca(i, j) is null)
                     Console.Write("- ");
                 else                
-                    Console.Write(tab.GetPeca(i,j) + " ");
+                    Console.Write(tab.MovPeca(i,j) + " ");
             }
             Console.WriteLine();
         }
