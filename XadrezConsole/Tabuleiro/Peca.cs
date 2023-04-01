@@ -13,5 +13,4 @@ class Peca
         Tab = tab;
         QtMovimentos = 0;
     }
-
 }
