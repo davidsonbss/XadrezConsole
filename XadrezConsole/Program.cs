@@ -6,6 +6,9 @@ internal class Program
 {
     private static void Main(string[] args)
     {
+        PosicaoXadrez poss = new PosicaoXadrez('c', 7);
+        Console.WriteLine(poss.ToPosicao());
+
         try
         {
 

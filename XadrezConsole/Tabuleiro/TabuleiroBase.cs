@@ -12,9 +12,9 @@ internal class TabuleiroBase
         _pecas = new Peca[linhas, colunas];
     }
 
-    public Peca MovPeca(int linha, int coluna) 
+    public Peca MovPeca(int linha, int coluna)
     {
-        return _pecas[linha, coluna]; 
+        return _pecas[linha, coluna];
     }
 
     public Peca MovPeca(Posicao pos)

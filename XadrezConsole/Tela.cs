@@ -1,6 +1,6 @@
 ﻿using Tabuleiro;
 namespace XadrezConsole;
- class Tela
+class Tela
 {
     public static void ImprimirTabuleiro(TabuleiroBase tab)
     {
@@ -8,10 +8,10 @@ namespace XadrezConsole;
         {
             for (int j = 0; j < tab.Colunas; j++)
             {
-                if(tab.MovPeca(i, j) is null)
+                if (tab.MovPeca(i, j) is null)
                     Console.Write("- ");
-                else                
-                    Console.Write(tab.MovPeca(i,j) + " ");
+                else
+                    Console.Write(tab.MovPeca(i, j) + " ");
             }
             Console.WriteLine();
         }

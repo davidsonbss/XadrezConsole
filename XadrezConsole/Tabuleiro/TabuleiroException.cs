@@ -1,9 +1,7 @@
-﻿namespace Tabuleiro
+﻿namespace Tabuleiro;
+internal class TabuleiroException : Exception
 {
-    internal class TabuleiroException : Exception
+    public TabuleiroException(string message) : base(message)
     {
-        public TabuleiroException(string message) : base(message) 
-        {
-        }
     }
 }
