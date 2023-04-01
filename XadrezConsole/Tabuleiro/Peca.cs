@@ -6,9 +6,9 @@ class Peca
     public int QtMovimentos { get; set; }
     public TabuleiroBase Tab { get; set; }
 
-    public Peca(Posicao posicao, TabuleiroBase tab, Cor cor)
+    public Peca(TabuleiroBase tab, Cor cor)
     {
-        Posicao = posicao;
+        Posicao = null;
         Cor = cor;
         Tab = tab;
         QtMovimentos = 0;

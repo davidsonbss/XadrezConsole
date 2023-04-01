@@ -1,5 +1,4 @@
 ﻿namespace Tabuleiro;
-
 class Posicao
 {
     public int Linha { get; set; }

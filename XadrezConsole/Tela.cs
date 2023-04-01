@@ -1,7 +1,6 @@
 ﻿using Tabuleiro;
 namespace XadrezConsole;
-
-internal class Tela
+ class Tela
 {
     public static void ImprimirTabuleiro(TabuleiroBase tab)
     {
