@@ -18,11 +18,11 @@ class Tela
             for (int j = 0; j < tab.Colunas; j++)
             {
                 ImprimirFundoTabuleiro(i, j);
-                if (tab.MovPeca(i, j) is null)
+                if (tab.PecaPasso(i, j) is null)
                     Console.Write("  ");
                 else
                 {
-                    ImprimirPeca(tab.MovPeca(i, j));
+                    ImprimirPeca(tab.PecaPasso(i, j));
                     Console.Write(" ");
                 }
             }
@@ -53,17 +53,17 @@ class Tela
         if (i % 2 == 0)
         {
             if (j % 2 == 0)
-                Console.BackgroundColor = ConsoleColor.Gray;
+                Console.BackgroundColor = ConsoleColor.Cyan;
             else
-                Console.BackgroundColor = ConsoleColor.Green;
+                Console.BackgroundColor = ConsoleColor.DarkGreen;
         }
 
         if (i % 2 != 0)
         {
             if (j % 2 == 0)
-                Console.BackgroundColor = ConsoleColor.Green;
+                Console.BackgroundColor = ConsoleColor.DarkGreen;
             else
-                Console.BackgroundColor = ConsoleColor.Gray;
+                Console.BackgroundColor = ConsoleColor.Cyan;
         }
     }
 }

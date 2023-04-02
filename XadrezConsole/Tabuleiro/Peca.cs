@@ -13,4 +13,9 @@ class Peca
         Tab = tab;
         QtMovimentos = 0;
     }
+
+    public void IncrementarQtMovimentos()
+    {
+        QtMovimentos++;
+    }
 }

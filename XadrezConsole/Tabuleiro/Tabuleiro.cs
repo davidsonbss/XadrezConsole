@@ -12,12 +12,12 @@ internal class Tabuleiro
         _pecas = new Peca[linhas, colunas];
     }
 
-    public Peca MovPeca(int linha, int coluna)
+    public Peca PecaPasso(int linha, int coluna)
     {
         return _pecas[linha, coluna];
     }
 
-    public Peca MovPeca(Posicao pos)
+    public Peca PecaPasso(Posicao pos)
     {
         return _pecas[pos.Linha, pos.Coluna];
     }
@@ -25,7 +25,7 @@ internal class Tabuleiro
     public bool ExistePeca(Posicao pos)
     {
         ValidarPosicao(pos);
-        return MovPeca(pos) != null;
+        return PecaPasso(pos) != null;
     }
 
     public void ColocarPeca(Peca p, Posicao pos)
@@ -36,6 +36,16 @@ internal class Tabuleiro
         }
         _pecas[pos.Linha, pos.Coluna] = p;
         p.Posicao = pos;
+    }
+
+    public Peca RemoverPeca(Posicao pos)
+    {
+        if (PecaPasso(pos) == null)
+            return null;
+
+        Peca aux = PecaPasso(pos);
+        _pecas[pos.Linha, pos.Coluna] = null;
+        return aux;
     }
 
     public bool PosicaoValida(Posicao pos)
