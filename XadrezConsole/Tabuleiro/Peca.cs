@@ -1,12 +1,12 @@
-﻿namespace Tabuleiro;
+﻿namespace TabuleiroXadrez;
 class Peca
 {
     public Posicao Posicao { get; set; }
     public Cor Cor { get; set; }
     public int QtMovimentos { get; set; }
-    public TabuleiroBase Tab { get; set; }
+    public Tabuleiro Tab { get; set; }
 
-    public Peca(TabuleiroBase tab, Cor cor)
+    public Peca(Tabuleiro tab, Cor cor)
     {
         Posicao = null;
         Cor = cor;

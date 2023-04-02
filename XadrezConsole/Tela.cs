@@ -1,8 +1,8 @@
-﻿using Tabuleiro;
+﻿using TabuleiroXadrez;
 namespace XadrezConsole;
 class Tela
 {
-    public static void ImprimirTabuleiro(TabuleiroBase tab)
+    public static void ImprimirTabuleiro(Tabuleiro tab)
     {
         for (int i = 0; i < tab.Linhas; i++)
         {

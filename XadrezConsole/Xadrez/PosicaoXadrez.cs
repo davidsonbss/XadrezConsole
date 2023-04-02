@@ -1,4 +1,4 @@
-﻿using Tabuleiro;
+﻿using TabuleiroXadrez;
 namespace Xadrez;
 internal class PosicaoXadrez
 {

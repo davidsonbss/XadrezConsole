@@ -1,4 +1,4 @@
-﻿using Tabuleiro;
+﻿using TabuleiroXadrez;
 using Xadrez;
 using XadrezConsole;
 
@@ -12,7 +12,7 @@ internal class Program
         try
         {
 
-            TabuleiroBase tabuleiro = new TabuleiroBase(8, 8);
+            Tabuleiro tabuleiro = new Tabuleiro(8, 8);
 
             tabuleiro.ColocarPeca(new Torre(tabuleiro, Cor.Preta), new Posicao(0, 0));
             tabuleiro.ColocarPeca(new Torre(tabuleiro, Cor.Preta), new Posicao(1, 3));

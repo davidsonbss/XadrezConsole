@@ -1,4 +1,4 @@
-﻿namespace Tabuleiro;
+﻿namespace TabuleiroXadrez;
 internal class TabuleiroException : Exception
 {
     public TabuleiroException(string message) : base(message)

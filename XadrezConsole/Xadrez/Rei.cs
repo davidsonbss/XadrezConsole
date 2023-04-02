@@ -1,8 +1,8 @@
-﻿using Tabuleiro;
+﻿using TabuleiroXadrez;
 namespace Xadrez;
 class Rei: Peca
 {
-	public Rei(TabuleiroBase tab, Cor cor) : base(tab, cor)
+	public Rei(Tabuleiro tab, Cor cor) : base(tab, cor)
 	{
 	}
 

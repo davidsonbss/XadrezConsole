@@ -1,8 +1,8 @@
-﻿using Tabuleiro;
+﻿using TabuleiroXadrez;
 namespace Xadrez;
 class Torre : Peca
 {
-    public Torre(TabuleiroBase tab, Cor cor) : base(tab, cor)
+    public Torre(Tabuleiro tab, Cor cor) : base(tab, cor)
     {
     }
 

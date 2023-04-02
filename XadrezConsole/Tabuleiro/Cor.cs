@@ -1,4 +1,4 @@
-﻿namespace Tabuleiro;
+﻿namespace TabuleiroXadrez;
 enum Cor
 {
     Branca,
