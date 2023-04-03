@@ -10,6 +10,7 @@ namespace Xadrez;
 internal class PartidaXadrez
 {
     public Tabuleiro Tab { get; private set; }
+    public bool Terminada { get; private set; }
     private int _turno;
     private Cor _jogadorAtual;
 
@@ -18,6 +19,7 @@ internal class PartidaXadrez
         Tab = new Tabuleiro(8, 8);
         _turno = 1;
         _jogadorAtual = Cor.Branca;
+        Terminada = false;
         ColocarPecas();
     }
 

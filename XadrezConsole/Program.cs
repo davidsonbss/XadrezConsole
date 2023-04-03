@@ -12,11 +12,22 @@ internal class Program
 
             PartidaXadrez partida = new PartidaXadrez();
 
-            Tela.ImprimirTabuleiro(partida.Tab);
+            while (!partida.Terminada)
+            {
+                Console.Clear();
+                Tela.ImprimirTabuleiro(partida.Tab);
 
-            Console.WriteLine();
-            Posicao P = new Posicao(3, 4);
-            Console.WriteLine("Posição: " + P);
+                Console.Write("Origem: ");
+                Posicao origem = Tela.LerPosicaoXadrez().ToPosicao();
+                Console.Write("Destino: ");
+                Posicao destino = Tela.LerPosicaoXadrez().ToPosicao();
+
+                Console.WriteLine();
+                partida.ExecutaMovimento(origem, destino);
+            }
+
+
+            
 
         }
         catch (Exception ex)
