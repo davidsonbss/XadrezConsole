@@ -48,6 +48,12 @@ internal class PartidaXadrez
             throw new TabuleiroException("Não há movimentos possíveis para a peça de origem escolhida!");
     }
 
+    public void ValidarPosicaoDestino(Posicao origem, Posicao destino)
+    {
+        if (!Tab.PecaPasso(origem).PodeMoverPara(destino))
+            throw new TabuleiroException("Posição de destino inválida!");
+    }
+
     private void MudarJogador()
     {
         if(JogadorAtual == Cor.Branca)
