@@ -5,8 +5,9 @@ namespace XadrezConsole;
 class Tela
 {
     readonly static ConsoleColor _backgroundDefault = ConsoleColor.Black;
-    readonly static ConsoleColor _CorPecaPreta = ConsoleColor.Black;
-    readonly static ConsoleColor _CorPecaBranca = ConsoleColor.White;
+    readonly static ConsoleColor _corPecaPreta = ConsoleColor.Black;
+    readonly static ConsoleColor _corPecaBranca = ConsoleColor.White;
+    readonly static ConsoleColor _fundoMovimentoDestaque = ConsoleColor.DarkGray;
 
 
     public static void ImprimirTabuleiro(Tabuleiro tab)
@@ -18,20 +19,39 @@ class Tela
             Console.Write(8 - i + " ");
             for (int j = 0; j < tab.Colunas; j++)
             {
-                ImprimirFundoTabuleiro(i, j);
-                if (tab.PecaPasso(i, j) is null)
-                    Console.Write("  ");
-                else
-                {
-                    ImprimirPeca(tab.PecaPasso(i, j));
-                    Console.Write(" ");
-                }
+                ImprimirFundoTabuleiro(i, j, false);
+
+                ImprimirPeca(tab.PecaPasso(i, j));
+
             }
             Console.BackgroundColor = _backgroundDefault;
             Console.WriteLine();
         }
         Console.WriteLine("  a b c d e f g h");
     }
+
+    public static void ImprimirTabuleiro(Tabuleiro tab, bool[,] posicoesPossiveis)
+    {
+        Console.BackgroundColor = _backgroundDefault;
+
+        for (int i = 0; i < tab.Linhas; i++)
+        {
+            Console.Write(8 - i + " ");
+            for (int j = 0; j < tab.Colunas; j++)
+            {
+
+                ImprimirFundoTabuleiro(i, j, posicoesPossiveis[i, j]);
+
+                ImprimirPeca(tab.PecaPasso(i, j));
+
+            }
+            Console.BackgroundColor = _backgroundDefault;
+            Console.WriteLine();
+        }
+        Console.WriteLine("  a b c d e f g h");
+    }
+
+
 
     public static PosicaoXadrez LerPosicaoXadrez()
     {
@@ -45,35 +65,62 @@ class Tela
     public static void ImprimirPeca(Peca peca)
     {
         ConsoleColor aux = Console.ForegroundColor;
-        if (peca.Cor == Cor.Branca)
-        {
-            Console.ForegroundColor = _CorPecaBranca;
-            Console.Write(peca);
-        }
+
+        if (peca is null)
+            Console.Write("  ");
         else
         {
-            Console.ForegroundColor = _CorPecaPreta;
-            Console.Write(peca);
+            if (peca.Cor == Cor.Branca)
+            {
+                Console.ForegroundColor = _corPecaBranca;
+                Console.Write(peca);
+            }
+            else
+            {
+                Console.ForegroundColor = _corPecaPreta;
+                Console.Write(peca);
+            }
+            Console.Write(" ");
+            Console.ForegroundColor = aux;
         }
-        Console.ForegroundColor = aux;
     }
 
-    public static void ImprimirFundoTabuleiro(int i, int j)
+    public static void ImprimirFundoTabuleiro(int i, int j, bool posicaoPossivelDestque)
     {
         if (i % 2 == 0)
         {
             if (j % 2 == 0)
-                Console.BackgroundColor = ConsoleColor.Cyan;
+            {
+                if (posicaoPossivelDestque)
+                    Console.BackgroundColor = ConsoleColor.Gray;
+                else
+                    Console.BackgroundColor = ConsoleColor.Cyan;
+            }
             else
-                Console.BackgroundColor = ConsoleColor.DarkGreen;
+            {
+                if (posicaoPossivelDestque)
+                    Console.BackgroundColor = ConsoleColor.DarkGray;
+                else
+                    Console.BackgroundColor = ConsoleColor.DarkGreen;
+            }
         }
 
         if (i % 2 != 0)
         {
             if (j % 2 == 0)
-                Console.BackgroundColor = ConsoleColor.DarkGreen;
+            {
+                if (posicaoPossivelDestque)
+                    Console.BackgroundColor = ConsoleColor.DarkGray;
+                else
+                    Console.BackgroundColor = ConsoleColor.DarkGreen;
+            }
             else
-                Console.BackgroundColor = ConsoleColor.Cyan;
+            {
+                if (posicaoPossivelDestque)
+                    Console.BackgroundColor = ConsoleColor.Gray;
+                else
+                    Console.BackgroundColor = ConsoleColor.Cyan;
+            }
         }
     }
 }
