@@ -11,14 +11,14 @@ internal class PartidaXadrez
 {
     public Tabuleiro Tab { get; private set; }
     public bool Terminada { get; private set; }
-    private int _turno;
-    private Cor _jogadorAtual;
+    public int Turno { get; private set; }
+    public Cor JogadorAtual { get; private set; }
 
     public PartidaXadrez()
     {
         Tab = new Tabuleiro(8, 8);
-        _turno = 1;
-        _jogadorAtual = Cor.Branca;
+        Turno = 1;
+        JogadorAtual = Cor.Branca;
         Terminada = false;
         ColocarPecas();
     }
@@ -30,6 +30,32 @@ internal class PartidaXadrez
         Peca pecaCapturada = Tab.RemoverPeca(destino);
         Tab.ColocarPeca(p, destino);
     }
+
+    public void RealizaJogada(Posicao origem, Posicao destino)
+    {
+        ExecutaMovimento(origem, destino);
+        Turno++;
+        MudarJogador();
+    }
+
+    public void ValidarPosicaoOrigem(Posicao pos)
+    {
+        if(Tab.PecaPasso(pos) is null)
+            throw new TabuleiroException("Não existe peça na posição de origem escolhida!");
+        if(JogadorAtual != Tab.PecaPasso(pos).Cor)
+            throw new TabuleiroException("A peça de origem escohida não é sua!");
+        if (!Tab.PecaPasso(pos).ExisteMovimentosPossiveis())
+            throw new TabuleiroException("Não há movimentos possíveis para a peça de origem escolhida!");
+    }
+
+    private void MudarJogador()
+    {
+        if(JogadorAtual == Cor.Branca)
+            JogadorAtual = Cor.Preta;
+        else
+            JogadorAtual = Cor.Branca;
+    }
+
 
     private void ColocarPecas()
     {
