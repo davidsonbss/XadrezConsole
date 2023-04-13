@@ -7,8 +7,41 @@ class Tela
     readonly static ConsoleColor _backgroundDefault = ConsoleColor.Black;
     readonly static ConsoleColor _corPecaPreta = ConsoleColor.Black;
     readonly static ConsoleColor _corPecaBranca = ConsoleColor.White;
-    readonly static ConsoleColor _fundoMovimentoDestaque = ConsoleColor.DarkGray;
+    readonly static ConsoleColor _fundoCapturadas = ConsoleColor.DarkGray;
 
+    public static void ImprimirPartida(PartidaXadrez partida)
+    {
+        ImprimirTabuleiro(partida.Tab);
+        Console.WriteLine();
+        ImprimirPecasCapturadas(partida);
+        Console.WriteLine();
+        Console.WriteLine("Turno: " + partida.Turno);
+        Console.WriteLine("Aguardando jogada: " + partida.JogadorAtual);
+    }
+
+    public static void ImprimirPecasCapturadas(PartidaXadrez partida)
+    {
+        Console.WriteLine("Peças capturadas:");
+        Console.Write("Brancas: ");
+        ImprimirPecasConjunto(partida.PecasCapturadas(Cor.Branca));
+        Console.Write("Pretas: ");
+        ImprimirPecasConjunto(partida.PecasCapturadas(Cor.Preta));
+    }
+
+    public static void ImprimirPecasConjunto(HashSet<Peca> conjunto)
+    {
+        Console.Write("[");
+        Console.BackgroundColor = _fundoCapturadas;
+        if(conjunto.Any(x => x.Cor == Cor.Branca))
+            Console.ForegroundColor = _corPecaBranca;
+        else
+            Console.ForegroundColor = _corPecaPreta;
+        foreach (Peca x in conjunto)
+            Console.Write(x + " ");
+        Console.ForegroundColor = ConsoleColor.Gray;
+        Console.BackgroundColor = _backgroundDefault;
+        Console.Write("]\n");
+    }
 
     public static void ImprimirTabuleiro(Tabuleiro tab)
     {
