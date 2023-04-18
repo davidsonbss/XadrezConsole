@@ -17,6 +17,10 @@ class Tela
         Console.WriteLine();
         Console.WriteLine("Turno: " + partida.Turno);
         Console.WriteLine("Aguardando jogada: " + partida.JogadorAtual);
+        if (partida.Xeque)
+        {
+            Console.WriteLine("XEQUE!");
+        }
     }
 
     public static void ImprimirPecasCapturadas(PartidaXadrez partida)
@@ -32,12 +36,15 @@ class Tela
     {
         Console.Write("[");
         Console.BackgroundColor = _fundoCapturadas;
+       
         if(conjunto.Any(x => x.Cor == Cor.Branca))
             Console.ForegroundColor = _corPecaBranca;
         else
             Console.ForegroundColor = _corPecaPreta;
+        
         foreach (Peca x in conjunto)
             Console.Write(x + " ");
+        
         Console.ForegroundColor = ConsoleColor.Gray;
         Console.BackgroundColor = _backgroundDefault;
         Console.Write("]\n");
